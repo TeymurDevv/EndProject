@@ -1,5 +1,6 @@
 ﻿using EndProject.DataContext.Interfaces;
 using EndProject.Domain;
+
 namespace EndProject.DataContext.Repositories
 {
     public class EmployeeRepository : IRepository<Employee>

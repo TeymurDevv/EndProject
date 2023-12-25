@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EndProject.Domain.Common
+﻿namespace EndProject.Domain.Common
 {
     public class BaseEntity
     {

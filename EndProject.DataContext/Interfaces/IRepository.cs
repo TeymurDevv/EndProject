@@ -1,4 +1,5 @@
 ﻿using EndProject.Domain.Common;
+
 namespace EndProject.DataContext.Interfaces
 {
     public interface IRepository <T> where T : BaseEntity
