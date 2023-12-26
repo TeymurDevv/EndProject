@@ -13,6 +13,7 @@ namespace EndProject.DataContext
             
             Employees = new List<Employee>();
             Departments = new List<Department>();
+            Departments.Add(new Department() { Name="Salam123"});
 
         }
     }

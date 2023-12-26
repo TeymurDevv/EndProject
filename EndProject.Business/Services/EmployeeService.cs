@@ -44,12 +44,18 @@ namespace EndProject.Business.Services
         {
             Department existDepartment = _departmentRepository
                 .Get(d => d.Name.Equals(departmentName, StringComparison.OrdinalIgnoreCase));
-            if (existDepartment is null) return null;
+            if (existDepartment is null)
+            {
+                Console.WriteLine("The Department with This name is not found",ConsoleColor.Red);
+                return null;
+            }
             employee.Id = Count;
             employee.Department = existDepartment;
             bool result = _employeeRepository.Create(employee);
             if (!result) return null;
             Count++;
+            Console.WriteLine($"Employee Successfuly Created\n" +
+                $"Name: {employee.Name} Department: {employee.Department.Name}");
             return employee;
         }
 
