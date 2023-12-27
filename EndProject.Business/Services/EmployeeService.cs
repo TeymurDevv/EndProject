@@ -17,27 +17,27 @@ namespace EndProject.Business.Services
 
         public List<Employee> GetAll()
         {
-            throw new NotImplementedException();
+            return _employeeRepository.GetAll();
         }
 
         public List<Employee> GetEmployeesByDepartment(string departmentName)
         {
-            throw new NotImplementedException();
+            return _employeeRepository.GetAll(e=>e.Department.Name.Equals(departmentName, StringComparison.OrdinalIgnoreCase));
         }
 
         public List<Employee> GetAll(string name)
         {
-            throw new NotImplementedException();
+            return _employeeRepository.GetAll(e=>e.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
         public List<Employee> GetAll(int age)
         {
-            throw new NotImplementedException();
+            return _employeeRepository.GetAll(e=>e.Age==age);
         }
 
         public List<Employee> GetAll(byte departmentId)
         {
-            throw new NotImplementedException();
+           return _employeeRepository.GetAll(e=>e.Department.Id==departmentId);
         }
 
         public Employee Create(Employee employee, string departmentName)
@@ -61,17 +61,47 @@ namespace EndProject.Business.Services
 
         public Employee Get(int id)
         {
-            throw new NotImplementedException();
+            Employee existEmployee = _employeeRepository.Get(e=>e.Id==id);
+            if (existEmployee is null) return null;
+            return existEmployee;
         }
 
         public Employee Update(int id, Employee employee, string? departmentName)
         {
-            throw new NotImplementedException();
+            var existEmployee = _employeeRepository.Get(e => e.Id == id);
+            if (existEmployee is null) return null;
+            var existDepartment = _departmentRepository.Get(d => d.Name == departmentName);
+            if (existDepartment is null) return null;
+            if (!string.IsNullOrEmpty(employee.Name))
+            {
+                existEmployee.Name = employee.Name;
+            }
+            if (!string.IsNullOrEmpty(employee.SurName))
+            {
+                existEmployee.SurName = employee.SurName;
+            }
+            if (!string.IsNullOrEmpty(employee.Adress))
+            {
+                existEmployee.Adress = employee.Adress;
+            }
+            existEmployee.Department = existDepartment;
+            if (_employeeRepository.Update(existEmployee))
+            {
+                return existEmployee;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Employee Delete(int id)
         {
-            throw new NotImplementedException();
+            Employee existEmployee  =_employeeRepository.Get(e=>e.Id==id);
+            if (existEmployee is null) return null;
+            bool result = _employeeRepository.Delete(existEmployee);
+            if (result) return existEmployee;
+            return null;
         }
     }
 }
