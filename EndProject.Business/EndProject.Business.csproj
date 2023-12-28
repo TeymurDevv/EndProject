@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EndProject.DataContext\EndProject.DataContext.csproj" />
     <ProjectReference Include="..\EndProject.Domain\EndProject.Domain.csproj" />
+    <ProjectReference Include="..\EndProject.Helpers\EndProject.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

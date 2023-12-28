@@ -1,10 +1,11 @@
 ﻿using EndProject.Business.Interfaces;
 using EndProject.DataContext.Repositories;
 using EndProject.Domain;
+using EndProject.Helpers;
 
 namespace EndProject.Business.Services
 {
-    internal class DepartmentService : IDepartment
+    public class DepartmentService : IDepartment
     {
         private readonly DepartmentRepository _departmentRepository;
         private readonly EmployeeRepository _employeeRepository;
@@ -18,7 +19,11 @@ namespace EndProject.Business.Services
         public Department Create(Department department)
         {
             Department existDepartmentWithName = _departmentRepository.Get(d => d.Name.Equals(department.Name, StringComparison.OrdinalIgnoreCase));
-            if (existDepartmentWithName is not null) return null;
+            if (existDepartmentWithName is not null)
+            {
+                Helper.Print("Department is Already Exist with this name",ConsoleColor.Red);
+                return null;
+            }
             department.Id = Count;
             if (_departmentRepository.Create(department))
             {

@@ -2,7 +2,7 @@
 
 namespace EndProject.DataContext
 {
-    static class DbContext
+    public static class DbContext
     {
 
         public static List<Employee> Employees { get; set; }
@@ -13,7 +13,6 @@ namespace EndProject.DataContext
             
             Employees = new List<Employee>();
             Departments = new List<Department>();
-            Departments.Add(new Department() { Name="Salam123"});
 
         }
     }
