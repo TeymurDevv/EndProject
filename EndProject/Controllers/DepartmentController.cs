@@ -6,6 +6,7 @@ using EndProject.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -64,6 +65,21 @@ namespace EndProject.Controllers
             catch (Exception ex)
             {
                 Helper.Print("There was a Problem while i was trying to open the txt Document: " + ex.Message, ConsoleColor.Red);
+            }
+        }
+        public void GetAllDepartMentsInNotepad()
+        {
+            Console.Clear();
+            string size = Console.ReadLine();
+            bool result = int.TryParse(size, out int givenCapacity);
+            if (result)
+            {
+                StringBuilder departmentsStr = new();
+                departmentsStr.AppendLine("Filtered Departments List:");
+                foreach (Department department in departmentService.GetAll(givenCapacity))
+                {
+                    departmentsStr.Append($"{department} \n");
+                }
             }
         }
     }
