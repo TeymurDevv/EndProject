@@ -11,8 +11,11 @@ while (true)
 
     switch (result)
     {
-        case (int)EmployeeMenu.CreateEmployee:
+        case (int)DepartmentMenu.CreateDepartment:
             departmentController.CreateDepartment();
+            break;
+        case (int)DepartmentMenu.GetAllDepartmentsInNotepad:
+            departmentController.GetAllDepartmentsInNotepad();
             break;
         default:
             Helper.Print("Wrong Option", ConsoleColor.Red);
