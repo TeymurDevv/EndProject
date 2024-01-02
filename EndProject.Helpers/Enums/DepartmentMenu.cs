@@ -2,7 +2,11 @@
 {
     public enum DepartmentMenu
     {
-        CreateDepartment = 1,
-        GetAllDepartmentsInNotepad = 2,
+        CreateDepartment=1,
+        GetAllDepartments,
+        UpdateDepartment,
+        DeleteDepartment,
+        GetAllDepartmentsInNotepad,
+        GetAllFilteredDepartmentsInNotepad,
     }
 }
