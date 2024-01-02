@@ -65,6 +65,28 @@ namespace EndProject.Controllers
             }
 
         }
+
+        public void UpdateDepartment()
+        {
+            Helper.Print("Enter Id",ConsoleColor.Yellow);
+            int id = int.Parse(Console.ReadLine());
+            Helper.Print("Enter capacity:",ConsoleColor.Yellow);
+            int capacity = int.Parse(Console.ReadLine());
+            Helper.Print("Enter Department Name: ",ConsoleColor.Yellow);
+            string departmentName = Console.ReadLine();
+            Department department = new() { Name = departmentName,Capacity = capacity};
+            Department createdDepartment = departmentService.Update(id, department);
+            if (createdDepartment != null)
+            {
+                Helper.Print($"{department.Name} uptaded succesfully ", ConsoleColor.Green);
+            }
+            else
+            {
+                Helper.Print("Something went wrong", ConsoleColor.Red);
+
+            }
+
+        }
         public void GetAllDepartmentsInNotepad()
         {
             Console.Clear();
