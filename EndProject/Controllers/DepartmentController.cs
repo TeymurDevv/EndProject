@@ -65,7 +65,6 @@ namespace EndProject.Controllers
             }
 
         }
-
         public void UpdateDepartment()
         {
             Helper.Print("Enter Id",ConsoleColor.Yellow);
@@ -87,6 +86,24 @@ namespace EndProject.Controllers
             }
 
         }
+        public void DeleteDepartment()
+        {
+            Helper.Print("Enter Id:",ConsoleColor.Yellow);
+            int id = int.Parse(Console.ReadLine());
+            Department result = departmentService.Delete(id);
+            if (result == null)
+            {
+                Helper.Print("something went wrong",ConsoleColor.Red);
+
+            }
+            else
+            {
+                Helper.Print("Department Deleted",ConsoleColor.Green);
+
+            }
+
+        }
+
         public void GetAllDepartmentsInNotepad()
         {
             Console.Clear();
@@ -107,7 +124,7 @@ namespace EndProject.Controllers
                 Helper.Print("There was a Problem while i was trying to open the txt Document: " + ex.Message, ConsoleColor.Red);
             }
         }
-        public void GetAllDepartMentsInNotepad()
+        public void GetAllFilteredDepartmentsInNotepad()
         {
             Console.Clear();
             string size = Console.ReadLine();
@@ -122,5 +139,6 @@ namespace EndProject.Controllers
                 }
             }
         }
+
     }
 }
