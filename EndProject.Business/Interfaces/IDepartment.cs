@@ -8,7 +8,6 @@ namespace EndProject.Business.Interfaces
         Department Update(int id, Department department);
         Department Delete(int id);
         Department Get(int id);
-
         List<Department> GetAll();
         List<Department> GetAll(string name);
         List<Department> GetAll(int capacity);

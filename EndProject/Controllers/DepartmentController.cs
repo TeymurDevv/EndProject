@@ -46,7 +46,25 @@ namespace EndProject.Controllers
             Thread.Sleep(2000);
             Helper.MainMenu();
         }
+        public void GetAllDepartments()
+        {
+            Helper.Print("Department list :", ConsoleColor.Red);
+            List<Department> departments = departmentService.GetAll();
+            if (departments.Count > 0)
+            {
+                foreach (Department department in departments)
+                {
+                    Helper.Print($"{department}", ConsoleColor.Green);
 
+                }
+            }
+            else
+            {
+                Helper.Print("Empty list", ConsoleColor.Red);
+
+            }
+
+        }
         public void GetAllDepartmentsInNotepad()
         {
             Console.Clear();
