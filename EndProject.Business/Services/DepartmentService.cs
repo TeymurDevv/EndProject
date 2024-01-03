@@ -75,13 +75,17 @@ namespace EndProject.Business.Services
 
         public Department Update(int id, Department department)
         {
-            Department existDepartment = _departmentRepository.Get(d=>d.Id == id);
+            Department existDepartment = _departmentRepository.Get(d => d.Id == id);
             if (existDepartment is null) return null;
-            Department existDepartmentWithName = _departmentRepository
-                .Get(d => d.Name.Equals(department.Name, StringComparison.OrdinalIgnoreCase) && d.Id != existDepartment.Id);
-            if (existDepartmentWithName is null) return null;
+            Department existDepartmentWithName = _departmentRepository.Get(d => d.Name.Equals(department.Name, StringComparison.OrdinalIgnoreCase) && d.Id != existDepartment.Id);
+            if (existDepartmentWithName is not null) return null;
             existDepartment.Name = department.Name;
-            if (_departmentRepository.Update(department)) return existDepartment;
+            existDepartment.Capacity = department.Capacity;
+            bool result = _departmentRepository.Update(department);
+            if (result)
+            {
+                return existDepartment;
+            }
             return null;
         }
     }

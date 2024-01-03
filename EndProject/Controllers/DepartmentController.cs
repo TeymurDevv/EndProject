@@ -80,8 +80,11 @@ namespace EndProject.Controllers
             if (existDepartment is not null) 
             {
                 Department newDepartment = new() { Name = departmentName, Capacity = capacity };
-                departmentService.Update(id, newDepartment);
-                Helper.Print($"Department {existDepartment.Name} was Successfully Updated", ConsoleColor.Green);
+                Department updatedDepartment =  departmentService.Update(id, newDepartment);
+                if (updatedDepartment is not null)
+                {
+                    Helper.Print($"Department {existDepartment.Name} was Successfully Updated", ConsoleColor.Green);
+                }
             }
             else
             {
@@ -116,7 +119,6 @@ namespace EndProject.Controllers
                 goto IdInput;
             }
         }
-
         public void GetAllDepartmentsInNotepad()
         {
             Console.Clear();
