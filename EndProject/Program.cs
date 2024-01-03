@@ -14,6 +14,9 @@ while (true)
         case (int)DepartmentMenu.CreateDepartment:
             departmentController.CreateDepartment();
             break;
+        case (int)DepartmentMenu.GetDepartmentById:
+            departmentController.GetDepartmentById();
+            break;
         case (int)DepartmentMenu.GetAllDepartments:
             departmentController.GetAllDepartments();
             break;

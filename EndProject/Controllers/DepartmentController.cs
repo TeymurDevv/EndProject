@@ -46,6 +46,34 @@ namespace EndProject.Controllers
             Thread.Sleep(2000);
             Helper.MainMenu();
         }
+        public void GetDepartmentById()
+        {
+            Console.Clear();
+            Helper.Print("Enter Department Id", ConsoleColor.Yellow);
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            if (result)
+            {
+                Department existDepartment =  departmentService.Get(id);
+                if (existDepartment is not null)
+                {
+                    Helper.Print($"{existDepartment}", ConsoleColor.Green);
+                }
+                else
+                {
+                    Helper.Print("Department with this Id is not found", ConsoleColor.Red);
+                }
+                Thread.Sleep(1000);
+                Helper.MainMenu();
+
+            }
+            else
+            {
+                Helper.Print("Id Format is not valid", ConsoleColor.Red);
+                goto IdInput;
+            }
+
+        }
         public void GetAllDepartments()
         {
             Console.Clear();

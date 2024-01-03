@@ -3,6 +3,7 @@
     public enum DepartmentMenu
     {
         CreateDepartment=1,
+        GetDepartmentById,
         GetAllDepartments,
         GetAllFilteredDepartments,
         UpdateDepartment,
