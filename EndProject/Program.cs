@@ -17,6 +17,9 @@ while (true)
         case (int)DepartmentMenu.GetAllDepartments:
             departmentController.GetAllDepartments();
             break;
+        case (int)DepartmentMenu.GetAllFilteredDepartments:
+            departmentController.GetAllFilteredDepartments();
+            break;
         case (int)DepartmentMenu.UpdateDepartment:
             departmentController.UpdateDepartment();
             break;

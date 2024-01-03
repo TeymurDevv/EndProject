@@ -4,6 +4,7 @@
     {
         CreateDepartment=1,
         GetAllDepartments,
+        GetAllFilteredDepartments,
         UpdateDepartment,
         DeleteDepartment,
         GetAllDepartmentsInNotepad,

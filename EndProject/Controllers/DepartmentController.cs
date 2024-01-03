@@ -68,6 +68,27 @@ namespace EndProject.Controllers
             Helper.MainMenu();
 
         }
+        public void GetAllFilteredDepartments()
+        {
+            Console.Clear();
+            Helper.Print("Enter Capacity", ConsoleColor.Yellow);
+            SizeInput: string size = Console.ReadLine();
+            bool result = int.TryParse(size, out int givenCapacity);
+            if (result)
+            {
+                foreach (Department department in departmentService.GetAll(givenCapacity))
+                {
+                    Helper.Print($"{department}", ConsoleColor.Green);
+                }
+                Thread.Sleep(1000);
+                Helper.MainMenu();
+            }
+            else
+            {
+                Helper.Print("Please enter the Size Properly", ConsoleColor.Red);
+                goto SizeInput;
+            }
+        }
         public void UpdateDepartment()
         {
             Helper.Print("Enter Id",ConsoleColor.Yellow);
