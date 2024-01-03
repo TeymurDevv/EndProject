@@ -92,27 +92,34 @@ namespace EndProject.Controllers
         public void UpdateDepartment()
         {
             Helper.Print("Enter Id",ConsoleColor.Yellow);
-            int id = int.Parse(Console.ReadLine());
-            Helper.Print("Enter capacity:",ConsoleColor.Yellow);
-            int capacity = int.Parse(Console.ReadLine());
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            Helper.Print("Enter Capacity:",ConsoleColor.Yellow);
+            CapacityInput: string givenCapacity = Console.ReadLine();
+            bool cResult = int.TryParse(givenCapacity, out int capacity);
             Helper.Print("Enter Department Name: ",ConsoleColor.Yellow);
             string departmentName = Console.ReadLine();
-            Department existDepartment = departmentService.Get(id);
-            if (existDepartment is not null) 
+            if (result && cResult && !string.IsNullOrEmpty(departmentName))
             {
-                Department newDepartment = new() { Name = departmentName, Capacity = capacity };
-                Department updatedDepartment =  departmentService.Update(id, newDepartment);
-                if (updatedDepartment is not null)
+                Department existDepartment = departmentService.Get(id);
+                if (existDepartment is not null)
                 {
-                    Helper.Print($"Department {existDepartment.Name} was Successfully Updated", ConsoleColor.Green);
+                    Department newDepartment = new() { Name = departmentName, Capacity = capacity };
+                    Department updatedDepartment = departmentService.Update(id, newDepartment);
+                    if (updatedDepartment is not null)
+                    {
+                        Helper.Print($"Department {existDepartment.Name} was Successfully Updated", ConsoleColor.Green);
+                    }
+                }
+                else
+                {
+                    Helper.Print("There is no Department to update in this Id", ConsoleColor.Red);
                 }
             }
             else
             {
-                Helper.Print("There is no Department to update in this Id", ConsoleColor.Red);
+                Helper.Print("Input Fields Format is Invalid", ConsoleColor.Red);
             }
-
-
         }
         public void DeleteDepartment()
         {
