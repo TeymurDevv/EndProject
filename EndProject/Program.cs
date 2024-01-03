@@ -29,6 +29,9 @@ while (true)
         case (int)DepartmentMenu.GetAllFilteredDepartmentsInNotepad:
             departmentController.GetAllFilteredDepartmentsInNotepad();
             break;
+        case (int)DepartmentMenu.Exit:
+            System.Environment.Exit(0);
+            break;
         default:
             Helper.Print("Wrong Option", ConsoleColor.Red);
             goto Enter;

@@ -8,5 +8,6 @@
         DeleteDepartment,
         GetAllDepartmentsInNotepad,
         GetAllFilteredDepartmentsInNotepad,
+        Exit,
     }
 }
