@@ -1,4 +1,1 @@
 Departments List:
-Id: 1 Name: P518 Capacity: 20 
-Id: 2 Name: P444 Capacity: 20 
-Id: 3 Name: P59090 Capacity: 20 

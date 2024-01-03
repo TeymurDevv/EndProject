@@ -14,8 +14,20 @@ while (true)
         case (int)DepartmentMenu.CreateDepartment:
             departmentController.CreateDepartment();
             break;
+        case (int)DepartmentMenu.GetAllDepartments:
+            departmentController.GetAllDepartments();
+            break;
+        case (int)DepartmentMenu.UpdateDepartment:
+            departmentController.UpdateDepartment();
+            break;
+        case (int)DepartmentMenu.DeleteDepartment:
+            departmentController.DeleteDepartment();
+            break;
         case (int)DepartmentMenu.GetAllDepartmentsInNotepad:
             departmentController.GetAllDepartmentsInNotepad();
+            break;
+        case (int)DepartmentMenu.GetAllFilteredDepartmentsInNotepad:
+            departmentController.GetAllFilteredDepartmentsInNotepad();
             break;
         default:
             Helper.Print("Wrong Option", ConsoleColor.Red);

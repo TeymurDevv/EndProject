@@ -48,6 +48,7 @@ namespace EndProject.Controllers
         }
         public void GetAllDepartments()
         {
+            Console.Clear();
             Helper.Print("Department list :", ConsoleColor.Red);
             List<Department> departments = departmentService.GetAll();
             if (departments.Count > 0)
@@ -63,6 +64,8 @@ namespace EndProject.Controllers
                 Helper.Print("Empty list", ConsoleColor.Red);
 
             }
+            Thread.Sleep(3000);
+            Helper.MainMenu();
 
         }
         public void UpdateDepartment()
@@ -73,35 +76,45 @@ namespace EndProject.Controllers
             int capacity = int.Parse(Console.ReadLine());
             Helper.Print("Enter Department Name: ",ConsoleColor.Yellow);
             string departmentName = Console.ReadLine();
-            Department department = new() { Name = departmentName,Capacity = capacity};
-            Department createdDepartment = departmentService.Update(id, department);
-            if (createdDepartment != null)
+            Department existDepartment = departmentService.Get(id);
+            if (existDepartment is not null) 
             {
-                Helper.Print($"{department.Name} uptaded succesfully ", ConsoleColor.Green);
+                Department newDepartment = new() { Name = departmentName, Capacity = capacity };
+                departmentService.Update(id, newDepartment);
+                Helper.Print($"Department {existDepartment.Name} was Successfully Updated", ConsoleColor.Green);
             }
             else
             {
-                Helper.Print("Something went wrong", ConsoleColor.Red);
-
+                Helper.Print("There is no Department to update in this Id", ConsoleColor.Red);
             }
+
 
         }
         public void DeleteDepartment()
         {
-            Helper.Print("Enter Id:",ConsoleColor.Yellow);
-            int id = int.Parse(Console.ReadLine());
-            Department result = departmentService.Delete(id);
-            if (result == null)
+            Console.Clear();
+            Helper.Print("Enter Id:", ConsoleColor.Yellow);
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            Department existDepartment = departmentService.Get(id);
+            if (result && existDepartment is not null)
             {
-                Helper.Print("something went wrong",ConsoleColor.Red);
-
+               departmentService.Delete(id);
+               Helper.Print("Department Deleted", ConsoleColor.Green);
+               Thread.Sleep(1000);
+               Helper.MainMenu();
+            }
+            else if (result && existDepartment is null)
+            {
+                Helper.Print("There is no Department to delete with this Id", ConsoleColor.Red);
+                Thread.Sleep(1000);
+                Helper.MainMenu();
             }
             else
             {
-                Helper.Print("Department Deleted",ConsoleColor.Green);
-
+                Helper.Print("The Format of Id is not valid", ConsoleColor.Red);
+                goto IdInput;
             }
-
         }
 
         public void GetAllDepartmentsInNotepad()
@@ -123,11 +136,14 @@ namespace EndProject.Controllers
             {
                 Helper.Print("There was a Problem while i was trying to open the txt Document: " + ex.Message, ConsoleColor.Red);
             }
+            Thread.Sleep(1000);
+            Helper.MainMenu();
         }
         public void GetAllFilteredDepartmentsInNotepad()
         {
             Console.Clear();
-            string size = Console.ReadLine();
+            Helper.Print("Enter Capacity", ConsoleColor.Yellow);
+            SizeInput: string size = Console.ReadLine();
             bool result = int.TryParse(size, out int givenCapacity);
             if (result)
             {
@@ -137,6 +153,23 @@ namespace EndProject.Controllers
                 {
                     departmentsStr.Append($"{department} \n");
                 }
+                string path = "C:\\Users\\TeymurDevv\\Desktop\\C# Projects\\EndProject\\Assets\\FilteredDepartments.txt";
+                File.WriteAllText(path, departmentsStr.ToString());
+                try
+                {
+                    Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    Helper.Print("There was a Problem while i was trying to open the txt Document: " + ex.Message, ConsoleColor.Red);
+                }
+                Thread.Sleep(1000);
+                Helper.MainMenu();
+            }
+            else
+            {
+                Helper.Print("Please enter the Size Properly", ConsoleColor.Red);
+                goto SizeInput;
             }
         }
 
