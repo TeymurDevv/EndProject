@@ -206,7 +206,7 @@ namespace EndProject.Controllers
         {
             Console.Clear();
             Helper.Print("Enter Department Name:", ConsoleColor.Yellow);
-            string departmentName = Console.ReadLine();
+            departmentNameInput: string departmentName = Console.ReadLine();
             if (!string.IsNullOrEmpty(departmentName))
             {
                 Department existDepartment = departmentService.Get(departmentName);
@@ -224,10 +224,19 @@ namespace EndProject.Controllers
                     {
                         Helper.Print("Empty List", ConsoleColor.Red);
                     }
-                    Thread.Sleep(5000);
-                    Helper.MainMenu();
+                }
+                else
+                {
+                    Helper.Print("Department with this Name is not found", ConsoleColor.Red);
                 }
             }
+            else
+            {
+                Helper.Print("Input Fields is not in Correct Format", ConsoleColor.Red);
+                goto departmentNameInput;
+            }
+            Thread.Sleep(5000);
+            Helper.MainMenu();
         }
     }
 }
