@@ -43,5 +43,32 @@ namespace EndProject.Controllers
             Thread.Sleep(1000);
             Helper.MainMenu();
         }
+        public void GetEmployeeById()
+        {
+            Console.Clear();
+            Helper.Print("Enter Employee Id", ConsoleColor.Yellow);
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            if (result)
+            {
+                Employee existEmployee = employeeService.Get(id);
+                if (existEmployee is not null)
+                {
+                    Helper.Print($"{existEmployee}", ConsoleColor.Green);
+                }
+                else
+                {
+                    Helper.Print("Employee with this Id is not found", ConsoleColor.Red);
+                }
+                Thread.Sleep(1000);
+                Helper.MainMenu();
+
+            }
+            else
+            {
+                Helper.Print("Id Format is not valid", ConsoleColor.Red);
+                goto IdInput;
+            }
+        }
     }
 }

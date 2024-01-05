@@ -39,6 +39,9 @@ while (true)
         case (int)EmployeeMenu.CreateEmployee:
             employeeController.CreateEmployee();
             break;
+        case (int)EmployeeMenu.GetEmployeeById:
+            employeeController.GetEmployeeById();
+            break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);
             break;
