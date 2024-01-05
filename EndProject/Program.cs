@@ -48,6 +48,9 @@ while (true)
         case (int)EmployeeMenu.DeleteEmployee:
             employeeController.DeleteEmployee();
             break;
+        case (int)EmployeeMenu.GetEmployeesByAge:
+            employeeController.GetEmployeesByAge();
+            break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);
             break;

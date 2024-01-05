@@ -12,5 +12,6 @@ namespace EndProject.Helpers.Enums
         GetEmployeeById,
         UpdateEmployee,
         DeleteEmployee,
+        GetEmployeesByAge,
     }
 }

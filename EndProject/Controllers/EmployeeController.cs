@@ -137,5 +137,34 @@ namespace EndProject.Controllers
                 goto IdInput;
             }
         }
+        public void GetEmployeesByAge()
+        {
+            Console.Clear();
+            Helper.Print("Enter Employee Age", ConsoleColor.Yellow);
+            AgeInput: string givenAge = Console.ReadLine();
+            bool result = int.TryParse(givenAge, out int age);
+            if (result)
+            {
+                List<Employee> employees = employeeService.GetAll(age);
+                if (employees.Count > 0)
+                {
+                    foreach (Employee employee in employees)
+                    {
+                        Helper.Print($"{employee}", ConsoleColor.Green);
+                    }
+                }
+                else
+                {
+                    Helper.Print("Empty List",ConsoleColor.Red);
+                }
+            }
+            else
+            {
+                Helper.Print("Input Fields is not in Correct Format", ConsoleColor.Red);
+                goto AgeInput;
+            }
+            Thread.Sleep(5000);
+            Helper.MainMenu();
+        }
     }
 }

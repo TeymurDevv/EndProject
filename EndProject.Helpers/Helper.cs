@@ -30,6 +30,7 @@ namespace EndProject.Helpers
                   "10. GetEmployeeById\n"+
                   "11. UpdateEmployee\n"+
                   "12. DeleteEmployee\n"+
+                  "13. GetEmployeesByAge\n"+
                   "0. Exit EndProject-CMS", ConsoleColor.Yellow);
         }
     }
