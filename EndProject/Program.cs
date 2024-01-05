@@ -2,6 +2,7 @@
 using EndProject.Helpers;
 using EndProject.Helpers.Enums;
 DepartmentController departmentController = new();
+EmployeeController employeeController = new();
 Helper.MainMenu();
 while (true)
 {
@@ -34,6 +35,9 @@ while (true)
             break;
         case (int)DepartmentMenu.GetAllFilteredDepartmentsInNotepad:
             departmentController.GetAllFilteredDepartmentsInNotepad();
+            break;
+        case (int)EmployeeMenu.CreateEmployee:
+            employeeController.CreateEmployee();
             break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);

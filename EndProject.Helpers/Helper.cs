@@ -21,12 +21,13 @@ namespace EndProject.Helpers
             Print("1. CreateDepartment\n" +
                   "2. GetDepartmentById\n"+
                   "3. GetAllDepartments\n"+
-                  "4. GetAllFilteredDepartments \n"+
+                  "4. GetAllFilteredDepartments\n"+
                   "5. UpdateDepartment\n" +
                   "6. DeleteDepartment\n" +
                   "7. GetAllDepartmentsInNotepad\n" +
                   "8. GetAllFilteredDepartmentsInNotepad\n" +
-                  "9. Exit EndProject-CMS", ConsoleColor.Yellow);
+                  "9. CreateEmployee\n"+
+                  "10. Exit EndProject-CMS", ConsoleColor.Yellow);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace EndProject.Controllers
             string adres = Console.ReadLine();
             Helper.Print("Enter Department Name:", ConsoleColor.Yellow);
             string departmentName = Console.ReadLine();
-            if (result && string.IsNullOrEmpty(name) && string.IsNullOrEmpty(surName) && string.IsNullOrEmpty(adres))
+            if (result && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surName) && !string.IsNullOrEmpty(adres) && !string.IsNullOrEmpty(departmentName))
             {
                 Employee employee = new() {Name = name, SurName = surName,Adress = adres, Age = age,CreatedAt = DateTime.Now};
                 Employee newEmployee = employeeService.Create(employee,departmentName);

@@ -10,6 +10,6 @@
         DeleteDepartment,
         GetAllDepartmentsInNotepad,
         GetAllFilteredDepartmentsInNotepad,
-        Exit,
+        Exit = 10,
     }
 }

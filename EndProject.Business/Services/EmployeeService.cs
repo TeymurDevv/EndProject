@@ -1,6 +1,7 @@
 ﻿using EndProject.Business.Interfaces;
 using EndProject.DataContext.Repositories;
 using EndProject.Domain;
+using EndProject.Helpers;
 
 namespace EndProject.Business.Services
 {
@@ -46,7 +47,7 @@ namespace EndProject.Business.Services
                 .Get(d => d.Name.Equals(departmentName, StringComparison.OrdinalIgnoreCase));
             if (existDepartment is null)
             {
-                Console.WriteLine("The Department with This name is not found",ConsoleColor.Red);
+                Helper.Print("The Department with This name is not found", ConsoleColor.Red);
                 return null;
             }
             employee.Id = Count;
