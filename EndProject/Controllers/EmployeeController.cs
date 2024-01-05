@@ -238,5 +238,33 @@ namespace EndProject.Controllers
             Thread.Sleep(5000);
             Helper.MainMenu();
         }
+        public void GetAllEmployeesByName() 
+        {
+            Console.Clear();
+            Helper.Print("Enter Employee Name", ConsoleColor.Yellow);
+            nameInput: string name = Console.ReadLine();
+            if (!string.IsNullOrEmpty(name))
+            {
+                List<Employee> employeeslist = employeeService.GetAll(name);
+                if (employeeslist.Count > 0)
+                {
+                    foreach (Employee employee in employeeslist)
+                    {
+                        Helper.Print($"{employee}", ConsoleColor.Green);
+                    }
+                }
+                else
+                {
+                    Helper.Print("Empty List", ConsoleColor.Red);
+                }
+            }
+            else
+            {
+                Helper.Print("Input Fields Format is not valid",ConsoleColor.Red);
+                goto nameInput;
+            }
+            Thread.Sleep(5000);
+            Helper.MainMenu();
+        }
     }
 }
