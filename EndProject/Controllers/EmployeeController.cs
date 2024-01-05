@@ -111,5 +111,31 @@ namespace EndProject.Controllers
             Thread.Sleep(1000);
             Helper.MainMenu();
         }
+        public void DeleteEmployee() 
+        {
+            Console.Clear();
+            Helper.Print("Enter Id:", ConsoleColor.Yellow);
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            Employee existEmployee = employeeService.Get(id);
+            if (result && existEmployee is not null)
+            {
+                departmentService.Delete(id);
+                Helper.Print("Employee Deleted", ConsoleColor.Green);
+                Thread.Sleep(1000);
+                Helper.MainMenu();
+            }
+            else if (result && existEmployee is null)
+            {
+                Helper.Print("There is no Employee to delete with this Id", ConsoleColor.Red);
+                Thread.Sleep(1000);
+                Helper.MainMenu();
+            }
+            else
+            {
+                Helper.Print("The Format of Id is not valid", ConsoleColor.Red);
+                goto IdInput;
+            }
+        }
     }
 }
