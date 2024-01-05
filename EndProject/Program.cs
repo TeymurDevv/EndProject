@@ -51,6 +51,9 @@ while (true)
         case (int)EmployeeMenu.GetEmployeesByAge:
             employeeController.GetEmployeesByAge();
             break;
+        case (int)EmployeeMenu.GetEmployeesByDepartmentId:
+            employeeController.GetEmployeesByDepartmentId();
+            break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);
             break;

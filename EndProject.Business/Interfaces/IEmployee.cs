@@ -8,7 +8,7 @@ namespace EndProject.Business.Interfaces
         List<Employee> GetEmployeesByDepartment(string departmentName);
         List<Employee> GetAll(string name);
         List<Employee> GetAll(int age);
-        List<Employee> GetAll(byte departmentId);
+        List<Employee> GetAllEmployeesByDepartmentId(int departmentId);
 
         Employee Create(Employee employee, string departmentName);
         Employee Get(int id);

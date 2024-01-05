@@ -36,7 +36,7 @@ namespace EndProject.Business.Services
             return _employeeRepository.GetAll(e=>e.Age==age);
         }
 
-        public List<Employee> GetAll(byte departmentId)
+        public List<Employee> GetAllEmployeesByDepartmentId(int departmentId)
         {
            return _employeeRepository.GetAll(e=>e.Department.Id==departmentId);
         }
@@ -47,7 +47,7 @@ namespace EndProject.Business.Services
                 .Get(d => d.Name.Equals(departmentName, StringComparison.OrdinalIgnoreCase));
             if (existDepartment is null)
             {
-                Helper.Print("The Department with This name is not found", ConsoleColor.Red);
+                Helper.Print("The Employee with This name is not found", ConsoleColor.Red);
                 return null;
             }
             employee.Id = Count;
@@ -102,5 +102,6 @@ namespace EndProject.Business.Services
             if (result) return existEmployee;
             return null;
         }
+
     }
 }

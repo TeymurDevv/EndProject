@@ -29,7 +29,7 @@ namespace EndProject.Controllers
             string departmentName = Console.ReadLine();
             if (result && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surName) && !string.IsNullOrEmpty(adres) && !string.IsNullOrEmpty(departmentName))
             {
-                Employee employee = new() {Name = name, SurName = surName,Adress = adres, Age = age,CreatedAt = DateTime.Now};
+                Employee employee = new() {Name = name, SurName = surName,Adress = adres, Age = (byte)age,CreatedAt = DateTime.Now};
                 Employee newEmployee = employeeService.Create(employee,departmentName);
                 if (newEmployee is not null)
                 {
@@ -92,7 +92,7 @@ namespace EndProject.Controllers
                 Employee existEmployee = employeeService.Get(id);
                 if (existEmployee is not null)
                 {
-                    Employee newEmployee = new() { Name = name, SurName = surName,Adress = adress,Age = age,UpdatedAt=DateTime.Now};
+                    Employee newEmployee = new() { Name = name, SurName = surName,Adress = adress,Age = (byte)age,UpdatedAt=DateTime.Now};
                     Employee updatedEmployee = employeeService.Update(id, newEmployee,departmentName);
                     if (updatedEmployee is not null)
                     {
@@ -164,6 +164,42 @@ namespace EndProject.Controllers
                 goto AgeInput;
             }
             Thread.Sleep(5000);
+            Helper.MainMenu();
+        }
+        public void GetEmployeesByDepartmentId() 
+        {
+            Console.Clear();
+            Helper.Print("Enter Department Id:", ConsoleColor.Yellow);
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            if (result)
+            {
+                Department existDepartment = departmentService.Get(id);
+                if (existDepartment is not null)
+                {
+                    List<Employee> employeesList = employeeService.GetAllEmployeesByDepartmentId(1);
+                    if (employeesList.Count > 0)
+                    {
+                        foreach (Employee employee in employeesList)
+                        {
+                            Helper.Print($"{employee}", ConsoleColor.Green);
+                        }
+                    }
+                    else
+                    {
+                        Helper.Print("Empty List", ConsoleColor.Red);
+                    }
+                }
+                else
+                {
+                    Helper.Print("Department with this Id is not Found", ConsoleColor.Red);
+                }
+            }          else
+            {
+                Helper.Print("The Input Fields Format is not valid", ConsoleColor.Red);
+                goto IdInput;
+            }
+            Thread.Sleep(1000);
             Helper.MainMenu();
         }
     }
