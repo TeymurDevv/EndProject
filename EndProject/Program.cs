@@ -45,6 +45,9 @@ while (true)
         case (int)EmployeeMenu.UpdateEmployee:
             employeeController.UpdateEmployee();
             break;
+        case (int)EmployeeMenu.DeleteEmployee:
+            employeeController.DeleteEmployee();
+            break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);
             break;

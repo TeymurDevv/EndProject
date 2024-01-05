@@ -11,5 +11,6 @@ namespace EndProject.Helpers.Enums
         CreateEmployee = 9,
         GetEmployeeById,
         UpdateEmployee,
+        DeleteEmployee,
     }
 }
