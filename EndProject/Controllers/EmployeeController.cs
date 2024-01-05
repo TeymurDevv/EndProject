@@ -1,4 +1,5 @@
 ﻿using EndProject.Business.Services;
+using EndProject.DataContext;
 using EndProject.Domain;
 using EndProject.Helpers;
 using System;
@@ -265,6 +266,10 @@ namespace EndProject.Controllers
             }
             Thread.Sleep(5000);
             Helper.MainMenu();
+        }
+        public void GetAllEmployeesCount()
+        {
+            Helper.Print($"{DbContext.Employees.Count} Employees Have Registered in the System", ConsoleColor.Green);
         }
     }
 }

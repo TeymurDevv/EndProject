@@ -16,5 +16,6 @@ namespace EndProject.Helpers.Enums
         GetEmployeesByDepartmentId,
         GetEmployeesByDepartmentName,
         GetEmployeesByName,
+        GetEmployeesCount,
     }
 }
