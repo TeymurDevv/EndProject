@@ -119,6 +119,7 @@ namespace EndProject.Controllers
         }
         public void UpdateDepartment()
         {
+            Console.Clear();
             Helper.Print("Enter Id",ConsoleColor.Yellow);
             IdInput: string givenId = Console.ReadLine();
             bool result = int.TryParse(givenId, out int id);
@@ -148,6 +149,8 @@ namespace EndProject.Controllers
             {
                 Helper.Print("Input Fields Format is Invalid", ConsoleColor.Red);
             }
+            Thread.Sleep(1000);
+            Helper.MainMenu();
         }
         public void DeleteDepartment()
         {

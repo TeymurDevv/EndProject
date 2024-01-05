@@ -42,6 +42,9 @@ while (true)
         case (int)EmployeeMenu.GetEmployeeById:
             employeeController.GetEmployeeById();
             break;
+        case (int)EmployeeMenu.UpdateEmployee:
+            employeeController.UpdateEmployee();
+            break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);
             break;

@@ -28,6 +28,7 @@ namespace EndProject.Helpers
                   "8. GetAllFilteredDepartmentsInNotepad\n" +
                   "9. CreateEmployee\n"+
                   "10. GetEmployeeById\n"+
+                  "11. UpdateEmployee\n"+
                   "0. Exit EndProject-CMS", ConsoleColor.Yellow);
         }
     }

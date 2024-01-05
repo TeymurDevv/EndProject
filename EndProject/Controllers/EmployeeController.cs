@@ -70,5 +70,46 @@ namespace EndProject.Controllers
                 goto IdInput;
             }
         }
+        public void UpdateEmployee()
+        {
+            Console.Clear();
+            Helper.Print("Enter Id", ConsoleColor.Yellow);
+            IdInput: string givenId = Console.ReadLine();
+            bool result = int.TryParse(givenId, out int id);
+            Helper.Print("Enter Age:", ConsoleColor.Yellow);
+            string givenAge = Console.ReadLine();
+            bool aResult = int.TryParse(givenAge, out int age);
+            Helper.Print("Enter Employee Name:", ConsoleColor.Yellow);
+            string name = Console.ReadLine();
+            Helper.Print("Enter Employee  SurName: ", ConsoleColor.Yellow);
+            string surName = Console.ReadLine();
+            Helper.Print("Enter Employee Adress: ", ConsoleColor.Yellow);
+            string adress = Console.ReadLine();
+            Helper.Print("Enter Employee Department: ", ConsoleColor.Yellow);
+            string departmentName = Console.ReadLine();
+            if (result && aResult && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surName) && !string.IsNullOrEmpty(adress) && !string.IsNullOrEmpty(departmentName))
+            {
+                Employee existEmployee = employeeService.Get(id);
+                if (existEmployee is not null)
+                {
+                    Employee newEmployee = new() { Name = name, SurName = surName,Adress = adress,Age = age,UpdatedAt=DateTime.Now};
+                    Employee updatedEmployee = employeeService.Update(id, newEmployee,departmentName);
+                    if (updatedEmployee is not null)
+                    {
+                        Helper.Print($"Employee {existEmployee.Name} was Successfully Updated", ConsoleColor.Green);
+                    }
+                }
+                else
+                {
+                    Helper.Print("There is no Employee to update in this Id", ConsoleColor.Red);
+                }
+            }
+            else
+            {
+                Helper.Print("Input Fields Format is Invalid", ConsoleColor.Red);
+            }
+            Thread.Sleep(1000);
+            Helper.MainMenu();
+        }
     }
 }
