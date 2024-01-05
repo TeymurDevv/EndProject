@@ -49,10 +49,13 @@ while (true)
             employeeController.DeleteEmployee();
             break;
         case (int)EmployeeMenu.GetEmployeesByAge:
-            employeeController.GetEmployeesByAge();
+            employeeController.GetAllEmployeesByAge();
             break;
         case (int)EmployeeMenu.GetEmployeesByDepartmentId:
-            employeeController.GetEmployeesByDepartmentId();
+            employeeController.GetAllEmployeesByDepartmentId();
+            break;
+        case (int)EmployeeMenu.GetEmployeesByDepartmentName:
+            employeeController.GetAllEmployeesByDepartmentName();
             break;
         case (int)DepartmentMenu.Exit:
             Environment.Exit(0);

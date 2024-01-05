@@ -137,7 +137,7 @@ namespace EndProject.Controllers
                 goto IdInput;
             }
         }
-        public void GetEmployeesByAge()
+        public void GetAllEmployeesByAge()
         {
             Console.Clear();
             Helper.Print("Enter Employee Age", ConsoleColor.Yellow);
@@ -166,7 +166,7 @@ namespace EndProject.Controllers
             Thread.Sleep(5000);
             Helper.MainMenu();
         }
-        public void GetEmployeesByDepartmentId() 
+        public void GetAllEmployeesByDepartmentId() 
         {
             Console.Clear();
             Helper.Print("Enter Department Id:", ConsoleColor.Yellow);
@@ -201,6 +201,33 @@ namespace EndProject.Controllers
             }
             Thread.Sleep(1000);
             Helper.MainMenu();
+        }
+        public void GetAllEmployeesByDepartmentName() 
+        {
+            Console.Clear();
+            Helper.Print("Enter Department Name:", ConsoleColor.Yellow);
+            string departmentName = Console.ReadLine();
+            if (!string.IsNullOrEmpty(departmentName))
+            {
+                Department existDepartment = departmentService.Get(departmentName);
+                if (existDepartment is not null ) 
+                {
+                    List<Employee> employeesList = employeeService.GetEmployeesByDepartment(departmentName);
+                    if (employeesList.Count>0)
+                    {
+                        foreach (Employee employee in employeesList)
+                        {
+                            Helper.Print($"{employee}", ConsoleColor.Green);
+                        }
+                    }
+                    else
+                    {
+                        Helper.Print("Empty List", ConsoleColor.Red);
+                    }
+                    Thread.Sleep(5000);
+                    Helper.MainMenu();
+                }
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace EndProject.Business.Interfaces
         Department Delete(int id);
         Department Get(int id);
         List<Department> GetAll();
-        List<Department> GetAll(string name);
+        Department Get(string name);
         List<Department> GetAll(int capacity);
 
     }

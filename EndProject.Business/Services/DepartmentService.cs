@@ -63,9 +63,9 @@ namespace EndProject.Business.Services
             return _departmentRepository.GetAll();
         }
 
-        public List<Department> GetAll(string name)
+        public Department Get(string name)
         {
-            return _departmentRepository.GetAll(d=>d.Name== name);
+            return _departmentRepository.Get(d=>d.Name== name);
         }
 
         public List<Department> GetAll(int capacity)
