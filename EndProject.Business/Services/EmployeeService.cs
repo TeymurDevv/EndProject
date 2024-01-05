@@ -54,8 +54,6 @@ namespace EndProject.Business.Services
             bool result = _employeeRepository.Create(employee);
             if (!result) return null;
             Count++;
-            Console.WriteLine($"Employee Successfuly Created\n" +
-                $"Name: {employee.Name} Department: {employee.Department.Name}");
             return employee;
         }
 
