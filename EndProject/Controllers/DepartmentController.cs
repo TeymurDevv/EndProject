@@ -22,6 +22,7 @@ namespace EndProject.Controllers
                 Department department = new();
                 department.Name = departmentName;
                 department.Capacity = departmentCapacity;
+                department.CreatedAt = DateTime.Now;
                 Department createdDepartment = departmentService.Create(department);
                 if (createdDepartment is not null)
                 {
@@ -124,7 +125,7 @@ namespace EndProject.Controllers
                 Department existDepartment = departmentService.Get(id);
                 if (existDepartment is not null)
                 {
-                    Department newDepartment = new() { Name = departmentName, Capacity = capacity };
+                    Department newDepartment = new() { Name = departmentName, Capacity = capacity,UpdatedAt = DateTime.Now };
                     Department updatedDepartment = departmentService.Update(id, newDepartment);
                     if (updatedDepartment is not null)
                     {
