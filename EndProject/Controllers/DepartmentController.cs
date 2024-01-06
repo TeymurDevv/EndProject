@@ -1,17 +1,8 @@
-﻿using EndProject.Business.Interfaces;
-using EndProject.Business.Services;
-using EndProject.DataContext.Repositories;
+﻿using EndProject.Business.Services;
 using EndProject.Domain;
 using EndProject.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace EndProject.Controllers
 {
